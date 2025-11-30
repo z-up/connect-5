@@ -213,6 +213,7 @@ export class App {
 				if(vacant.length !== 0){
 					this.setBallState(vacant[0], BallState.Mine);
 					this.state = GameState.Finished;
+					this.highlightLine(l);
 					// alert("You lost!"); // is shown bebore the ball color is changed
 					setTimeout(() => showInfoDlg("You lost 😛"), 500);
 					return;
@@ -271,6 +272,7 @@ export class App {
 		for(let l of this.getAllPossibleLines()){
 			counter += 1;
 			if(l.every(b => b.state === state)){
+				this.highlightLine(l);
 				return true;
 			}
 		}
@@ -404,6 +406,12 @@ export class App {
 			line.push(this.balls[x][y][z]);
 		}
 		yield line;
+	}
+
+	highlightLine(line){
+		for(let b of line){
+			b.mesh.scale.set(1.6, 1.6, 1.6);
+		}
 	}
 
 	render(){
