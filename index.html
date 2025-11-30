@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./cube.png">
+    <link rel="stylesheet" href="styles.css">
+    <title>Connect 5</title>
+</head>
+
+<body>
+    <dialog id="new_game_dlg">
+        <div>Pick your color</div>
+        <div class="dlg_btn" onclick="window.setPlayerColor('red')">
+            <font color="red">●</font> First move
+        </div>
+        <div class="dlg_btn" onclick="window.setPlayerColor('yellow')">
+            <font color="yellow">●</font> Second move
+        </div>
+    </dialog>
+
+    <dialog id="info_dlg">
+        <div id="info_dlg_content"></div>
+        <div class="dlg_btn" onclick="document.getElementById('info_dlg').close();">OK</div>
+    </dialog>
+
+    <div id="reset_btn" onclick="window.resetGame();">⟳</div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@v0.181.2/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.181.2/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import { App } from './app.js';
+
+        window.setPlayerColor = function(color){
+            const dlg = document.getElementById("new_game_dlg");
+            dlg.close();
+            window.app.setPlayerColor(color);
+        }
+
+        window.resetGame = function(){
+            window.app.resetGame();
+            document.getElementById("new_game_dlg").showModal();
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            const app = new App();
+            window.app = app;
+
+            document.getElementById("new_game_dlg").showModal();
+        });
+    </script>
+
+</body>
+</html>

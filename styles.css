@@ -1,0 +1,49 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+dialog {
+    font-size: 1.5rem;
+    color: white;
+    background-color: #656585;
+    border: none;
+    outline: 0;
+    box-shadow: 7px 7px 7px #333333;
+    padding: 15px;
+}
+
+dialog::backdrop {
+    background-color: black;
+    opacity: 0.3;
+}
+
+.dlg_btn {
+    background-color: #585878;
+    padding: 10px 15px;
+    margin: 10px;
+    border: 1px solid #999999;
+}
+
+.dlg_btn:hover {
+    border: 1px solid white;
+}
+
+#info_dlg {
+    min-width: 14ch;
+}
+
+#info_dlg .dlg_btn {
+    text-align: center;
+}
+
+#reset_btn {
+    position: absolute;
+    z-index: 10;
+    top: 5px;
+    left: 5px;
+    font-size: 2rem;
+    color: white;
+}
+
+
